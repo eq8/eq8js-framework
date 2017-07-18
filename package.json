@@ -1,0 +1,23 @@
+{
+  "name": "@eq8/framework",
+  "version": "0.0.0",
+  "description": "TBD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eq8/eq8js-framework.git"
+  },
+  "keywords": [
+    "eq8",
+    "framework"
+  ],
+  "author": "bbartolome",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/eq8/eq8js-framework/issues"
+  },
+  "homepage": "https://github.com/eq8/eq8js-framework#readme"
+}
