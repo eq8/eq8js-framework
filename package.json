@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/eq8/eq8js-framework/issues"
   },
-  "homepage": "https://github.com/eq8/eq8js-framework#readme"
+  "homepage": "https://github.com/eq8/eq8js-framework#readme",
+  "dependencies": {
+    "bloomrun": "3.0.4",
+    "eq8-core": "2.0.0"
+  }
 }
