@@ -6,9 +6,10 @@ module.exports = function exports() {
 	const core = new Core();
 	const bloomrun = require('bloomrun')();
 
-	bloomrun.default(function fallback(msg, callback) {
+	bloomrun.default((msg, callback) => {
 		const pattern = JSON.stringify(msg);
-		callback(new Error(`Cannot find a match for ${pattern}`))
+
+		callback(new Error(`Cannot find a match for ${pattern}`));
 	});
 
 	core.on('subscribe', (q, callback) => {
@@ -18,11 +19,13 @@ module.exports = function exports() {
 
 	core.on('dispatch', (e, callback) => {
 		core.logger.debug('dispatch:', e);
-		if(e) {
+		if (e) {
 			bloomrun.lookup(e)(e, (err, done) => {
-				if(err) core.logger.error(err);
+				if (err) {
+					core.logger.error(err);
+				}
 
-				if(callback) callback(err, done);
+				return callback && callback(err, done);
 			});
 		}
 	});
@@ -33,6 +36,7 @@ module.exports = function exports() {
 	};
 
 	let loading = 0;
+	let ready = false;
 
 	return {
 		use: (plugin, opts) => {
@@ -43,12 +47,21 @@ module.exports = function exports() {
 				api.act({ init: meta.name }, () => {
 					loading--;
 
-					if(!loading) core.emit('ready');
+					if (!loading) {
+						ready = true;
+						core.emit('ready');
+					}
 				});
 			}
 		},
 		ready: callback => {
-			core.on('ready', callback.bind(api));
+			const init = callback.bind(api);
+
+			if (!ready) {
+				core.on('ready', init);
+			} else {
+				init();
+			}
 		}
 	};
 };
