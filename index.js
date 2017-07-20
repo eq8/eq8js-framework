@@ -6,11 +6,7 @@ module.exports = function exports() {
 	const core = new Core();
 	const bloomrun = require('bloomrun')();
 
-	bloomrun.default((msg, callback) => {
-		const pattern = JSON.stringify(msg);
-
-		callback(new Error(`Cannot find a match for ${pattern}`));
-	});
+	bloomrun.default((msg, callback) => (callback && callback(new Error('handler-not-found'), msg)));
 
 	core.on('subscribe', (q, callback) => {
 		core.logger.debug('subscribe:', q);
@@ -20,13 +16,7 @@ module.exports = function exports() {
 	core.on('dispatch', (e, callback) => {
 		core.logger.debug('dispatch:', e);
 		if (e) {
-			bloomrun.lookup(e)(e, (err, done) => {
-				if (err) {
-					core.logger.error(err);
-				}
-
-				return callback && callback(err, done);
-			});
+			bloomrun.lookup(e)(e, callback || (() => {})); // provide a noop callback at least
 		}
 	});
 
