@@ -1,6 +1,6 @@
 {
   "name": "@eq8/framework",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An opinionated application development framework",
   "main": "index.js",
   "scripts": {

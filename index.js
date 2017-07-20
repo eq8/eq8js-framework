@@ -27,7 +27,6 @@ module.exports = function exports(options) {
 	};
 
 	let loading = 0;
-	let ready = false;
 
 	return {
 		use: (plugin, opts) => {
@@ -39,7 +38,6 @@ module.exports = function exports(options) {
 					loading--;
 
 					if (!loading) {
-						ready = true;
 						core.emit('ready');
 					}
 				});
@@ -48,10 +46,10 @@ module.exports = function exports(options) {
 		ready: callback => {
 			const init = callback.bind(api);
 
-			if (!ready) {
-				core.on('ready', init);
-			} else {
+			if (!loading) {
 				init();
+			} else {
+				core.on('ready', init);
 			}
 		}
 	};
