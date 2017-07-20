@@ -1,10 +1,16 @@
 {
   "name": "@eq8/framework",
   "version": "0.0.0",
-  "description": "TBD",
+  "description": "An opinionated application development framework",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "precommit": "npm run test:lint",
+    "prepush": "npm run test:lint && npm run test:unit",
+    "test": "npm run test:lint && npm run test:unit",
+    "test:lint": "eslint --cache --ext .js index.js bin/* lib",
+    "test:unit": "tape test/test.unit.js | faucet",
+    "cover": "istanbul cover test/test.unit.js",
+    "analyze": "plato -d analysis index.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +29,14 @@
   "dependencies": {
     "bloomrun": "3.0.4",
     "eq8-core": "2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "4.2.0",
+    "eslint-config-eslint": "4.0.0",
+    "faucet": "0.0.1",
+    "husky": "0.14.3",
+    "istanbul": "0.4.5",
+    "plato": "1.7.0",
+    "tape": "4.7.0"
   }
 }
