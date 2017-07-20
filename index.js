@@ -2,8 +2,9 @@
 
 const Core = require('eq8-core');
 
-module.exports = function exports() {
-	const core = new Core();
+module.exports = function exports(options) {
+	const settings = options || {};
+	const core = new Core({ logger: settings.logger });
 	const bloomrun = require('bloomrun')();
 
 	bloomrun.default((msg, callback) => (callback && callback(new Error('handler-not-found'), msg)));
