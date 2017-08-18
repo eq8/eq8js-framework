@@ -22,6 +22,7 @@ module.exports = function exports(options) {
 	});
 
 	const api = {
+		log: core.logger,
 		add: core.subscribe.bind(core),
 		act: core.dispatch.bind(core)
 	};
