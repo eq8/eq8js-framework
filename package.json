@@ -27,8 +27,8 @@
   },
   "homepage": "https://github.com/eq8/eq8js-framework#readme",
   "dependencies": {
-    "bloomrun": "3.0.4",
-    "eq8-core": "2.0.0"
+    "@eq8/core": "0.1.2",
+    "bloomrun": "3.0.4"
   },
   "devDependencies": {
     "eslint": "4.2.0",
