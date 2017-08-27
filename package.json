@@ -1,6 +1,6 @@
 {
   "name": "@eq8/framework",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "An opinionated application development framework",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eq8/eq8js-framework.git"
+    "url": "git+https://github.com/eq8/framework.git"
   },
   "keywords": [
     "eq8",
@@ -23,9 +23,9 @@
   "author": "bbartolome",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/eq8/eq8js-framework/issues"
+    "url": "https://github.com/eq8/framework/issues"
   },
-  "homepage": "https://github.com/eq8/eq8js-framework#readme",
+  "homepage": "https://github.com/eq8/framework#readme",
   "dependencies": {
     "@eq8/core": "0.1.2",
     "bloomrun": "3.0.4"
