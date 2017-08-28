@@ -1,5 +1,7 @@
 # @eq8/framework
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/eq8/framework.svg)](https://greenkeeper.io/)
+
 An opinionated application development framework
 
 ## Requirement
